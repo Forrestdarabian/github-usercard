@@ -4,7 +4,7 @@
 */
 axios.get('https://api.github.com/users/Forrestdarabian')
   .then(function (response) {
-    console.log(response);
+    console.log(response.data);
   })
   .catch(function (error) {
     console.log(error);
@@ -63,8 +63,19 @@ const followersArray = [];
 
 */
 
-function github(){
+function github(cards){
   const card = document.createElement('div')
+  avatar_url: "https://avatars0.githubusercontent.com/u/51133091?v=4"
+bio: "Lambda School Student"
+blog: ""
+email: null
+followers: 1
+following: 0
+
+id: 51133091
+location: "California"
+login: "Forrestdarabian"
+name: "Forrest Darabian"
   const image = document.createElement('img')
   const cardInfo = document.createElement('div')
   const name = document.createElement('h3')
@@ -76,12 +87,45 @@ function github(){
   const following = document.querySelector('p')
   const bio = document.querySelector('p')
 
-  menu.appendChild(menuTitle);
-  menuTitle.appendChild(students);
-  menuTitle.appendChild(faculty);
-  menuTitle.appendChild(whatsNew);
-  menuTitle.appendChild(techTrends);
-  menuTitle.appendChild(music);
-  menuTitle.appendChild(logOut);
+  card.appendChild(image);
+  card.appendChild(cardInfo);
+  card.appendChild(name);
+  card.appendChild(username);
+  card.appendChild(location);
+  card.appendChild(profile);
+  card.appendChild(address);
+  card.appendChild(followers);
+  card.appendChild(following);
+  card.appendChild(bio);
+  cardInfo.appendChild(name);
+  cardInfo.appendChild(username);
+  cardInfo.appendChild(location);
+  cardInfo.appendChild(profile);
+  cardInfo.appendChild(address);
+  cardInfo.appendChild(followers);
+  cardInfo.appendChild(following);
+  cardInfo.appendChild(bio);
+  profile.appendChild(address);
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  
+
+
+
+
 }
 
