@@ -1,3 +1,4 @@
+
 /* Step 1: using axios, send a GET request to the following URL 
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
@@ -32,6 +33,14 @@ axios.get('https://api.github.com/users/Forrestdarabian')
 */
 
 const followersArray = [];
+axios.get('https://api.github.com/users/Forrestdarabian/followers')
+  .then(function (response) {
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -63,19 +72,9 @@ const followersArray = [];
 
 */
 
-function github(cards){
+function createCard(cards){
   const card = document.createElement('div')
-  avatar_url: "https://avatars0.githubusercontent.com/u/51133091?v=4"
-bio: "Lambda School Student"
-blog: ""
-email: null
-followers: 1
-following: 0
-
-id: 51133091
-location: "California"
-login: "Forrestdarabian"
-name: "Forrest Darabian"
+  const newComponent = document.createElement('card')
   const image = document.createElement('img')
   const cardInfo = document.createElement('div')
   const name = document.createElement('h3')
@@ -87,6 +86,16 @@ name: "Forrest Darabian"
   const following = document.querySelector('p')
   const bio = document.querySelector('p')
 
+  image.src = "https://avatars0.githubusercontent.com/u/51133091?v=4";
+  name.textContent = 'Forrest Darabian';
+  username.textContent = 'Forrestdarabian';
+  location.textContent = 'California';
+  link.href = 'https://api.github.com/users/Forrestdarabian'
+  followers.textContent = '2'
+  following.textContent = '2'
+  bio.textContent = 'Lambda School Student'
+
+  card.appendChild(newComponent);
   card.appendChild(image);
   card.appendChild(cardInfo);
   card.appendChild(name);
@@ -106,26 +115,5 @@ name: "Forrest Darabian"
   cardInfo.appendChild(following);
   cardInfo.appendChild(bio);
   profile.appendChild(address);
-
-
-
-
-
-
-
-
-  
-
-  
-
-
-
-
-
-  
-
-
-
-
 }
 
