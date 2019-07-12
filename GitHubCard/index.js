@@ -4,8 +4,10 @@
            https://api.github.com/users/<your name>
 */
 axios.get('https://api.github.com/users/Forrestdarabian')
-  .then(function (response) {
-    console.log(response.data);
+  .then(function (data) {
+    console.log(data);
+    const myGitCard = createCard(data.data);
+    cards.appendChild(myGitCard)
   })
   .catch(function (error) {
     console.log(error);
@@ -34,9 +36,14 @@ axios.get('https://api.github.com/users/Forrestdarabian')
 
 const followersArray = [];
 axios.get('https://api.github.com/users/Forrestdarabian/followers')
-  .then(function (response) {
-    console.log(response.data);
+.then(data => {
+  console.log('my github data:', data.data);
+  const gitCard = (data.data);
+  gitCard.forEach(follower =>{
+    const card1 = createCard(follower);
+    cards.appendChild(card1);
   })
+})
   .catch(function (error) {
     console.log(error);
   });
@@ -72,6 +79,8 @@ axios.get('https://api.github.com/users/Forrestdarabian/followers')
 
 */
 
+const cards = document.querySelector('.cards')
+
 function createCard(cards){
   const card = document.createElement('div')
   const newComponent = document.createElement('card')
@@ -86,14 +95,21 @@ function createCard(cards){
   const following = document.querySelector('p')
   const bio = document.querySelector('p')
 
-  image.src = "https://avatars0.githubusercontent.com/u/51133091?v=4";
-  name.textContent = 'Forrest Darabian';
-  username.textContent = 'Forrestdarabian';
-  location.textContent = 'California';
-  link.href = 'https://api.github.com/users/Forrestdarabian'
+    // set the Style names
+    card.classList.add('card')
+    cardInfo.classList.add('card-info')
+    card.classList.add('name')
+    username.classList.add('username')
+
+  image.src = `${cards.avatar_url}`;
+  name.textContent = `${cards.login}`;
+  username.textContent = 'Web 21'
+  location.textContent = `${cards.login}`;
+  address.href = `${cards.url}`
   followers.textContent = '2'
-  following.textContent = '2'
-  bio.textContent = 'Lambda School Student'
+  following.textContent = 'Lambda School Student'
+  // bio.textContent = `${cards.bio}`
+  
 
   card.appendChild(newComponent);
   card.appendChild(image);
@@ -115,5 +131,6 @@ function createCard(cards){
   cardInfo.appendChild(following);
   cardInfo.appendChild(bio);
   profile.appendChild(address);
+  return card;
 }
 
